@@ -1,6 +1,9 @@
-import { Col, Container, Row } from "reactstrap";
 import { CardComponent } from "../components/postCard";
 import { BarNav } from "../components/navBar";
+import PostPage from "../pages/post";
+import { useState } from "react";
+import { Col, Container, Row } from "reactstrap";
+import { Route, Routes, useNavigate } from "react-router-dom";
 
 const cardList = [
   {
@@ -25,7 +28,7 @@ const cardList = [
     imageUrl: "https://picsum.photos/300/200",
     description:
       "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    createdAt: "2023-01-10T00:00:00.000Z",
+    createdAt: "2023-01-18T00:00:00.000Z",
   },
   {
     id: "127908ea-64aa-45cc-b413-038f842e4297",
@@ -33,19 +36,37 @@ const cardList = [
     imageUrl: "https://picsum.photos/300/200",
     description:
       "It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    createdAt: "2023-01-10T00:00:00.000Z",
+    createdAt: "2023-07-09T00:00:00.000Z",
   },
 ];
-
+export type Post = {
+  id: string;
+  imageUrl: string;
+  title: string;
+  description?: string;
+};
 function RootPage() {
+  const [selectedPost, setSelectedPost] = useState<Post | null>(null);
+  const navigate = useNavigate();
+
+  const handleCardClick = (post: Post) => {
+    setSelectedPost(post);
+    navigate(`/post/${post.id}`);
+  };
+
   return (
     <div>
-      <BarNav />;
+      <BarNav />
       <Container>
+        <Routes>
+          <Route path="/post/:id" element={<PostPage post={selectedPost} />} />
+        </Routes>
+
         <Row lg="4">
           {cardList.map((card) => (
-            <Col key={card.id}>
+            <Col key={card.id} onClick={() => handleCardClick(card)}>
               <CardComponent
+                key={card.id}
                 imgUrl={card.imageUrl}
                 title={card.title}
                 description={card.description}
