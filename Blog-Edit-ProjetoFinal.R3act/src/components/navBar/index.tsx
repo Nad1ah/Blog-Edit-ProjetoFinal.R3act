@@ -1,9 +1,21 @@
-import { Navbar, NavbarBrand } from "reactstrap";
+import { Navbar, NavbarBrand } from 'reactstrap'
+import { ReactNode } from 'react'
+import { useNavigate } from 'react-router-dom'
 
-export function BarNav() {
+export default function BarNav({ children }: { children: ReactNode }) {
+  const navigate = useNavigate()
   return (
-    <Navbar className="my-2" color="secondary" dark>
-      <NavbarBrand href="/">Blog Edit.</NavbarBrand>
-    </Navbar>
-  );
+    <div>
+      <Navbar className="mb-4" color="secondary" dark>
+        <NavbarBrand
+          onClick={() => navigate('/')}
+          style={{ cursor: 'pointer' }}
+          href="/"
+        >
+          Blog Edit.
+        </NavbarBrand>
+      </Navbar>
+      {children}
+    </div>
+  )
 }

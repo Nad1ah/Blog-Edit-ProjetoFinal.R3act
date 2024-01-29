@@ -1,21 +1,18 @@
-import { Card, CardBody, CardImg, CardTitle } from "reactstrap";
-import { Post } from "../index";
+import { Container } from 'reactstrap'
+import { PostDetails } from '../../components/postDetails'
 
-type PostPageProps = {
-  post: Post | null;
-};
-
-const PostPage: React.FC<PostPageProps> = ({ post }) => {
-  if (!post) return <div>Post not found</div>; // Add a null check here
+function PostPage() {
   return (
-    <Card>
-      <CardImg top width="100%" src={post.imageUrl} alt={post.title} />
-      <CardBody>
-        <CardTitle tag="h5">{post.title}</CardTitle>
-        <p>{post.description}</p>
-      </CardBody>
-    </Card>
-  );
-};
+    <div>
+      <Container>
+        <PostDetails
+          imageUrl="'https://picsum.photos/300/200'"
+          title="Meu quarto post"
+          description="It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
+        />
+      </Container>
+    </div>
+  )
+}
 
-export default PostPage;
+export default PostPage
