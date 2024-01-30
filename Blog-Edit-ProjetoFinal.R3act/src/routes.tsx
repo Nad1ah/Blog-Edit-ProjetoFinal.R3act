@@ -1,12 +1,11 @@
-import { createBrowserRouter } from 'react-router-dom'
-import RootPage from './pages'
-import PostPage from './pages/post'
-import BarNav from './components/navBar'
+import { createBrowserRouter } from "react-router-dom";
+import RootPage from "./pages/index";
+import PostPage from "./pages/post/index";
+import BarNav from "./components/navBar";
 
 export const router = createBrowserRouter([
   {
-    path: '/',
-
+    path: "/",
     element: (
       <BarNav>
         <RootPage />
@@ -14,11 +13,11 @@ export const router = createBrowserRouter([
     ),
   },
   {
-    path: '/post/:id',
+    path: "/post/:id",
     element: (
       <BarNav>
         <PostPage />
       </BarNav>
     ),
   },
-])
+]);

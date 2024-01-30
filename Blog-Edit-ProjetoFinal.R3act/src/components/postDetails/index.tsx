@@ -1,17 +1,19 @@
-import { Card, CardText, CardTitle, Col, Row, CardBody } from 'reactstrap'
+import { Card, CardText, CardTitle, Col, Row, CardBody } from "reactstrap";
 
 interface PostDetailsProps {
-  imageUrl: string
-  title: string
-  description: string
+  imageUrl: string;
+  title: string;
+  description: string;
+  onClick?: () => void;
 }
 export function PostDetails({
   imageUrl,
   title,
   description,
+  onClick,
 }: PostDetailsProps) {
   return (
-    <Card>
+    <Card onClick={onClick} style={{ cursor: "pointer" }}>
       <CardBody>
         <Row>
           <Col>
@@ -24,5 +26,5 @@ export function PostDetails({
         </Row>
       </CardBody>
     </Card>
-  )
+  );
 }

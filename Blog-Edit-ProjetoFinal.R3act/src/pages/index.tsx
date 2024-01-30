@@ -1,54 +1,40 @@
-import { CardComponent } from '../components/postCard'
- import { useEffect, useState } from 'react'
-import { Col, Container, Row } from 'reactstrap'
-
-interface PostProps {
-  id: string
-  imageUrl: string
-  title: string
-  description?: string
-  creatdAt: Date
-  handleCardClick:(id:string)=> void
-}
-
+import { Col, Container, Row } from "reactstrap";
+import { CardComponent } from "../components/postCard";
+import useRootPage from "../components/hooks/useRootPage";
 
 function RootPage() {
-  const [selectValue, selectValue] = useState<string>("")
-
-  function handleCardClick(post: Post) {
-    useEffect(() => {
-      setSelectedPost(post)
-      navigate(`/post/${post.id}`)
-    })
-  }
+  const { postsList, handleCardClick, selectValue, handleSelect } =
+    useRootPage();
 
   return (
-    <div>
-  
-      <Container>
-        <div 
-        style={{display: 'flex', justifyContent: "flex-end", marginBottom:"2rem"}}>
-          <select name="sort-post" value={selectValue} onChange={handleSelect}>
-            <option value="">Mais recente</option>
-            <option value="">Mais antigo</option>
-          </select>
-
-        </div>
-        <Row lg="4">
-          {cardList.map((card) => (
-            <Col key={card.id} }>
-              <CardComponent
-                key={card.id}
-                imgUrl={card.imageUrl}
-                title={card.title}
-                description={card.description}
-              />
-            </Col>
-          ))}
-        </Row>
-      </Container>
-    </div>
-  )
+    <Container>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "2rem",
+        }}
+      >
+        <select value={selectValue} onChange={handleSelect}>
+          <option value="newest">Mais recente</option>
+          <option value="oldest">Mais antiga</option>
+        </select>
+      </div>
+      <Row lg="4">
+        {postsList.map((card) => (
+          <Col key={card.id}>
+            <CardComponent
+              id={card.id}
+              imageUrl={card.imageUrl}
+              title={card.title}
+              description={card.description}
+              handleCardClick={handleCardClick}
+            />
+          </Col>
+        ))}
+      </Row>
+    </Container>
+  );
 }
 
-export default RootPage
+export default RootPage;

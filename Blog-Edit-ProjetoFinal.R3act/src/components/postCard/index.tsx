@@ -1,12 +1,14 @@
 import { Card, CardBody, CardText, CardTitle } from "reactstrap";
 
 interface CardProps {
-  imgUrl: string;
+  id: string;
+  imageUrl: string;
   title: string;
   description: string;
+  handleCardClick: (id: string) => void;
 }
 
-export function CardComponent({ title, description, imgUrl }: CardProps) {
+export function CardComponent({ title, description, imageUrl }: CardProps) {
   return (
     <Card
       style={{
@@ -16,7 +18,7 @@ export function CardComponent({ title, description, imgUrl }: CardProps) {
     >
       <img
         alt="Sample"
-        src={imgUrl}
+        src={imageUrl}
         style={{ borderRadius: "10px", height: "rem" }}
       />
       <CardBody>
