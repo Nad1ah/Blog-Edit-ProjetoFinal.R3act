@@ -1,4 +1,4 @@
-import { Button, Card, CardBody, CardText, CardTitle } from "reactstrap";
+import { Button, Card, CardBody, CardTitle } from "reactstrap";
 
 interface CardProps {
   id: string;
