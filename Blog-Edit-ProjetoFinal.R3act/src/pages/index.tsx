@@ -1,19 +1,19 @@
-import { Col, Container, Row } from 'reactstrap'
-import { CardComponent } from '../components/postCard'
-import useRootPage from '../components/hooks/useRootPage'
+import { Col, Container, Row } from "reactstrap";
+import { CardComponent } from "../components/postCard";
+import useRootPage from "../components/hooks/useRootPage";
 
 function RootPage() {
   const { postsList, handleCardClick, selectValue, handleSelect } =
-    useRootPage()
+    useRootPage();
 
   return (
     <Container>
       <div
         style={{
-          padding: '20px',
-          display: 'flex',
-          justifyContent: 'flex-end',
-          marginBottom: '2rem',
+          padding: "20px",
+          display: "flex",
+          justifyContent: "flex-end",
+          marginBottom: "2rem",
         }}
       >
         <select value={selectValue} onChange={handleSelect}>
@@ -28,14 +28,13 @@ function RootPage() {
               id={card.id}
               imageUrl={card.imageUrl}
               title={card.title}
-              description={card.description}
               handleCardClick={handleCardClick}
             />
           </Col>
         ))}
       </Row>
     </Container>
-  )
+  );
 }
 
-export default RootPage
+export default RootPage;

@@ -4,14 +4,12 @@ interface CardProps {
   id: string;
   imageUrl: string;
   title: string;
-
   handleCardClick: (id: string) => void;
 }
 
 export function CardComponent({
   id,
   title,
-
   imageUrl,
   handleCardClick,
 }: CardProps) {
