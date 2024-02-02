@@ -17,7 +17,11 @@ export function PostDetails({
       <CardBody>
         <Row>
           <Col>
-            <img alt="Sample" src={imageUrl} />
+            <img
+              alt="Sample"
+              src={imageUrl}
+              style={{ width: "20rem", padding: "15px", cursor: "pointer" }}
+            />
           </Col>
           <Col>
             <CardTitle tag="h5">{title}</CardTitle>
